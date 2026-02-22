@@ -68,9 +68,6 @@ alias copypath='copy_path'
 alias nvim='nvim -c "hi Normal guibg=NONE ctermbg=NONE | hi NormalNC guibg=NONE ctermbg=NONE | hi NormalFloat guibg=NONE ctermbg=NONE"'
 alias susnow='pmset sleepnow'
 
-***REMOVED***
-***REMOVED***
-
 alias tsc="tsc --noEmitOnError"
 
 #zoxide
@@ -83,6 +80,9 @@ alias view='bat'
 #eza
 alias ls='eza --icons --group-directories-first --oneline'
 alias tree='eza --tree --icons'
+
+#yazi
+alias files='yazi'
 
 #fzf
 export FZF_DEFAULT_OPTS="\
