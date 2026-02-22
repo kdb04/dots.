@@ -70,7 +70,7 @@ alias view='bat'
 
 #fzf
 export FZF_DEFAULT_OPTS="\
---height 40% \
+--height 80% \
 --layout=reverse \
 --border \
 --preview 'bat --style=numbers --color=always --line-range :500 {}' \
@@ -83,7 +83,12 @@ compinit
 
 source /opt/homebrew/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh
 
-zstyle ':fzf-tab:*' fzf-flags --preview-window=right:60%:wrap
+zstyle ':fzf-tab:*' fzf-flags \
+  --height=80% \
+  --layout=reverse \
+  --border \
+  --preview-window=right:80%:wrap
+
 zstyle ':fzf-tab:complete:*' fzf-preview \
   '[[ -d $realpath ]] && eza --tree --level=2 $realpath || bat --style=numbers --color=always --line-range :500 $realpath'
 
