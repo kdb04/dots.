@@ -1,0 +1,74 @@
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+sketchybar --bar position=top height=44 blur_radius=20 color=0x88000000
+default=(
+  padding_left=0
+  padding_right=0
+  icon.font="Hack Nerd Font:Bold:14.0"
+  label.font="Hack Nerd Font:Bold:12.0"
+  icon.color=0xffe8c49a
+  label.color=0xffe8c49a
+)
+sketchybar --default "${default[@]}"
+
+#left bubbles
+BASE=60
+GAP=18
+SPACE_COUNT=$(yabai -m query --spaces 2>/dev/null | python3 -c "import sys,json; print(len(json.load(sys.stdin)))" 2>/dev/null || echo 5)
+for i in $(seq 1 $SPACE_COUNT); do
+  PAD=$((BASE + (i - 1) * GAP))
+  sketchybar --add space space.$i left \
+    --set space.$i \
+      space=$i \
+      width=45 \
+      padding_left=$PAD \
+      padding_right=0 \
+      background.color=0x55c47a3a \
+      background.border_color=0x88e8a070 \
+      background.border_width=1 \
+      background.corner_radius=8 \
+      background.height=36 \
+      background.drawing=on \
+      background.image.drawing=off \
+      icon.drawing=off \
+      label.drawing=off \
+      script="$PLUGIN_DIR/space.sh $i" \
+      click_script="yabai -m space --focus $i 2>/dev/null"
+  sketchybar --subscribe space.$i space_changed window_created window_destroyed application_launched application_terminated
+done
+
+#right bubbles
+RBASE=60
+RGAP=12
+ITEMS=("wifi" "time" "date" "battery")
+SCRIPTS=("$PLUGIN_DIR/wifi.sh" "$PLUGIN_DIR/clock.sh" "$PLUGIN_DIR/date.sh" "$PLUGIN_DIR/battery.sh")
+FREQS=(30 10 60 120)
+
+for idx in "${!ITEMS[@]}"; do
+  ITEM="${ITEMS[$idx]}"
+  SCRIPT="${SCRIPTS[$idx]}"
+  FREQ="${FREQS[$idx]}"
+  if [ "$idx" -eq 0 ]; then
+    RPAD=$RBASE
+  else
+    RPAD=$RGAP
+  fi
+  sketchybar --add item $ITEM right \
+    --set $ITEM \
+      update_freq=$FREQ \
+      icon.drawing=off \
+      label.color=0xffe8c49a \
+      background.color=0x55c47a3a \
+      background.border_color=0x88e8a070 \
+      background.border_width=1 \
+      background.corner_radius=8 \
+      background.height=32 \
+      background.drawing=on \
+      padding_left=$RGAP \
+      padding_right=$RPAD \
+      label.padding_left=5 \
+      label.padding_right=5 \
+      script="$SCRIPT"
+done
+
+sketchybar --subscribe battery system_woke power_source_change
+sketchybar --update

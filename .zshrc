@@ -68,6 +68,8 @@ alias copypath='copy_path'
 alias nvim='nvim -c "hi Normal guibg=NONE ctermbg=NONE | hi NormalNC guibg=NONE ctermbg=NONE | hi NormalFloat guibg=NONE ctermbg=NONE"'
 alias susnow='pmset sleepnow'
 
+alias icat='kitty +kitten icat'
+
 alias tsc="tsc --noEmitOnError"
 
 #zoxide
