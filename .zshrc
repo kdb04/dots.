@@ -72,6 +72,13 @@ alias icat='kitty +kitten icat'
 
 alias tsc="tsc --noEmitOnError"
 
+#sql
+alias sql='mysql --system-command=ON -u root -p'
+
+#redis
+alias redis-start='brew services start redis'
+alias redis-stop='brew services stop redis'
+
 #zoxide
 eval "$(zoxide init zsh)"
 alias jump='z'

@@ -26,7 +26,7 @@ require("lazy").setup({
     import = "nvchad.plugins",
   },
 
-  { import = "plugins" },
+  { import = "custom.plugins" },
 }, lazy_config)
 
 -- load theme
@@ -40,5 +40,4 @@ vim.schedule(function()
   require "mappings"
 end)
 
--- Load custom config files manually
-pcall(require, "custom.configs.lspconfig")
+
