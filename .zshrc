@@ -117,6 +117,14 @@ zstyle ':fzf-tab:*' fzf-flags \
 zstyle ':fzf-tab:complete:*' fzf-preview \
   '[[ -d $realpath ]] && eza --tree --level=2 $realpath || bat --style=numbers --color=always --line-range :500 $realpath'
 
+#atuin
+export ATUIN_SEARCH_MODE="fuzzy"
+export ATUIN_FILTER_MODE="global"
+export ATUIN_STYLE="compact"
+export ATUIN_INLINE_HEIGHT=20
+
+eval "$(atuin init zsh)"
+
 #colorscheme
 export LS_COLORS="$(vivid generate molokai)"
 

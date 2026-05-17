@@ -6,5 +6,5 @@ macOS dotfiles.
 
 ## stack
 
-macOS · kitty · zsh · neovim · yazi · yabai · sketchybar · fzf · zoxide · eza · bat · obsidian 
+macOS · kitty · zsh · neovim · yazi · yabai · sketchybar · fzf · atuin · zoxide · eza · bat · obsidian 
 
