@@ -13,12 +13,15 @@ sketchybar --default "${default[@]}"
 #left bubbles
 BASE=60
 GAP=18
-SPACE_COUNT=$(yabai -m query --spaces 2>/dev/null | python3 -c "import sys,json; print(len(json.load(sys.stdin)))" 2>/dev/null || echo 5)
-for i in $(seq 1 $SPACE_COUNT); do
-  PAD=$((BASE + (i - 1) * GAP))
-  sketchybar --add space space.$i left \
-    --set space.$i \
-      space=$i \
+
+sketchybar --add event aerospace_workspace_change
+
+for sid in $(yabai -m query --spaces | jq '.[].index'); do
+  PAD=$((BASE + (sid - 1) * GAP))
+
+  sketchybar --add space space.$sid left \
+    --set space.$sid \
+      space=$sid \
       width=45 \
       padding_left=$PAD \
       padding_right=0 \
@@ -28,12 +31,18 @@ for i in $(seq 1 $SPACE_COUNT); do
       background.corner_radius=8 \
       background.height=36 \
       background.drawing=on \
-      background.image.drawing=off \
       icon.drawing=off \
       label.drawing=off \
-      script="$PLUGIN_DIR/space.sh $i" \
-      click_script="yabai -m space --focus $i 2>/dev/null"
-  sketchybar --subscribe space.$i space_changed window_created window_destroyed application_launched application_terminated
+      script="$PLUGIN_DIR/space.sh $sid" \
+      click_script="yabai -m space --focus $sid"
+
+  sketchybar --subscribe space.$sid \
+    space_change \
+    space_windows_change \
+    window_created \
+    window_destroyed \
+    application_launched \
+    application_terminated
 done
 
 #right bubbles
