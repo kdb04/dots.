@@ -1,13 +1,16 @@
 ---@type ChadrcConfig
 local M = {}
 
-M.ui = {
+M.base46 = {
   theme = "onedark",
   transparency = true,
 }
 
+M.nvdash = {
+  load_on_startup = true,
+}
+
 M.plugins = "custom.plugins"
-M.mappings = require "custom.mappings"
 M.hl_override = require "custom.highlights"
 
 return M

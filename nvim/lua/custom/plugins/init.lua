@@ -20,7 +20,32 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require "custom.configs.lspconfig"
+      require("nvchad.configs.lspconfig").defaults()
+      require("custom.configs.lspconfig")
+    end,
+  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = function(_, opts)
+      opts.filters = opts.filters or {}
+      opts.filters.git_ignored = false
+
+      opts.renderer = opts.renderer or {}
+      opts.renderer.icons = opts.renderer.icons or {}
+      opts.renderer.icons.glyphs = opts.renderer.icons.glyphs or {}
+
+      opts.renderer.icons.glyphs.git = {
+        unstaged = "M",
+        staged = "A",
+        unmerged = "U",
+        renamed = "R",
+        untracked = "U",
+        deleted = "D",
+        ignored = "I",
+      }
+
+      return opts
     end,
   },
 

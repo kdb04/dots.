@@ -1,13 +1,7 @@
+vim.lsp.enable("pyright")
+vim.lsp.enable("gopls")
+vim.lsp.enable("clangd")
+vim.lsp.enable("rust_analyzer")
+vim.lsp.enable("jdtls")
+vim.lsp.enable("ts_ls")
 
-local on_attach = require("nvchad.configs.lspconfig").on_attach
-local capabilities = require("nvchad.configs.lspconfig").capabilities
-local lspconfig = require("lspconfig")
-
-local servers = { "pyright", "clangd", "rust_analyzer", "gopls", "jdtls", "sqlls" }
-
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-end
