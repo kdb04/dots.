@@ -48,9 +48,18 @@ done
 #right bubbles
 RBASE=60
 RGAP=12
-ITEMS=("wifi" "time" "date" "battery")
-SCRIPTS=("$PLUGIN_DIR/wifi.sh" "$PLUGIN_DIR/clock.sh" "$PLUGIN_DIR/date.sh" "$PLUGIN_DIR/battery.sh")
-FREQS=(30 10 60 120)
+
+ITEMS=("wifi" "time" "date" "battery" "weather")
+
+SCRIPTS=(
+  "$PLUGIN_DIR/wifi.sh"
+  "$PLUGIN_DIR/clock.sh"
+  "$PLUGIN_DIR/date.sh"
+  "$PLUGIN_DIR/battery.sh"
+  "$PLUGIN_DIR/weather.sh"
+)
+
+FREQS=(30 10 60 120 1800 5)
 
 for idx in "${!ITEMS[@]}"; do
   ITEM="${ITEMS[$idx]}"
@@ -61,10 +70,19 @@ for idx in "${!ITEMS[@]}"; do
   else
     RPAD=$RGAP
   fi
+
+  case "$ITEM" in
+    weather) ICON="󰖙" ;;
+    wifi) ICON="" ;;
+    battery) ICON="" ;;
+    *) ICON="" ;;
+  esac
+
   sketchybar --add item $ITEM right \
     --set $ITEM \
       update_freq=$FREQ \
-      icon.drawing=off \
+      icon="$ICON" \
+      icon.drawing=on \
       label.color=0xffe8c49a \
       background.color=0x55c47a3a \
       background.border_color=0x88e8a070 \
