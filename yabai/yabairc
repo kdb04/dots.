@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+yabai -m signal --add event=space_created action="sketchybar --reload"
+yabai -m signal --add event=space_destroyed action="sketchybar --reload"
