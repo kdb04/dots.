@@ -5,6 +5,10 @@ return {
     event = "VeryLazy",
   },
   {
+    "lewis6991/gitsigns.nvim",
+    opts = {},
+  },
+  {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     config = true,
@@ -15,16 +19,6 @@ return {
     -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
   },
-
-  -- These are some examples, uncomment them if you want to see them work!
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require("nvchad.configs.lspconfig").defaults()
-      require("custom.configs.lspconfig")
-    end,
-  },
-
   {
     "nvim-tree/nvim-tree.lua",
     opts = function(_, opts)
@@ -61,4 +55,79 @@ return {
   -- 		},
   -- 	},
   -- },
+
+  {
+    "coder/claudecode.nvim",
+    dependencies = {
+      "folke/snacks.nvim",
+    },
+    cmd = {
+      "ClaudeCode",
+      "ClaudeCodeFocus",
+      "ClaudeCodeSelectModel",
+      "ClaudeCodeAdd",
+      "ClaudeCodeSend",
+      "ClaudeCodeTreeAdd",
+      "ClaudeCodeStatus",
+      "ClaudeCodeStart",
+      "ClaudeCodeStop",
+      "ClaudeCodeOpen",
+      "ClaudeCodeClose",
+      "ClaudeCodeDiffAccept",
+      "ClaudeCodeDiffDeny",
+      "ClaudeCodeCloseAllDiffs",
+    },
+    opts = {
+      terminal = {
+        provider = "snacks",
+        snacks_win_opts = {
+          position = "float",
+          width = 0.85,
+          height = 0.85,
+          border = "rounded",
+        },
+      },
+    },
+  },
+  {
+    "vapourismo/terminals.nvim",
+    dependencies = { "folke/snacks.nvim" },
+    cmd = {
+      "TermNew",
+      "TermClose",
+      "TermPrev",
+      "TermNext",
+      "TermToggle"
+    },
+    opts = {
+      position = "float",
+    },
+    config = function(_, opts)
+      require("snacks").config.style("terminal", {
+        border = "rounded",
+      })
+      require("terminals").setup(opts)
+    end,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    lazy = false,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    lazy = false,
+    opts = {
+    	ensure_installed = {
+      		"clangd",
+      		"gopls",
+      		"jdtls",
+      		"pyright",
+      		"rust_analyzer",
+      		"sqlls",
+      		"ts_ls",
+      		"lua_ls",
+    	},
+    	automatic_enable = true,
+     },
+  },
 }
