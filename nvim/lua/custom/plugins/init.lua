@@ -130,4 +130,8 @@ return {
     	automatic_enable = true,
      },
   },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    branch  = "main",
+  },
 }
