@@ -14,6 +14,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 vim.api.nvim_create_autocmd("CursorMoved", {
   callback = function()
+    if vim.fn.mode() ~= "n" then
+      return
+    end
+
     local tree = require("nvim-tree.api").tree
 
     if tree.is_visible() and not tree.is_tree_buf(0) then
