@@ -29,6 +29,8 @@ return {
       opts.renderer.icons = opts.renderer.icons or {}
       opts.renderer.icons.glyphs = opts.renderer.icons.glyphs or {}
 
+      opts.renderer.highlight_opened_files = "name"
+
       opts.renderer.icons.glyphs.git = {
         unstaged = "M",
         staged = "A",
@@ -37,6 +39,13 @@ return {
         untracked = "U",
         deleted = "D",
         ignored = "I",
+      }
+
+      opts.update_focused_file = {
+        enable = true,
+        update_root = {
+          enable = false,
+        }
       }
 
       return opts

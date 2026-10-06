@@ -11,7 +11,8 @@ M.override = {
   SignColumn = { bg = "none" },
   LineNr = { bg = "none" },
 
-  NvimTreeGitDirty = { fg = "#E5C07B" }, -- Modified (Yellow)
+  NvimTreeOpenedHL = { bg = "#3E4451" },
+NvimTreeGitDirty = { fg = "#E5C07B" }, -- Modified (Yellow)
   NvimTreeGitNew = { fg = "#98C379" }, -- Green (Added)
   NvimTreeGitDeleted = { fg = "#E06C75" }, -- Red (Deleted)
   NvimTreeGitRenamed = { fg = "#61AFEF" }, -- Blue (Renamed)
