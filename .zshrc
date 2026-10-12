@@ -72,6 +72,8 @@ alias icat='kitty +kitten icat'
 
 alias tsc="tsc --noEmitOnError"
 
+alias monitor='bash -n "$HOME/dots./scripts/sysdash.sh" && bash "$HOME/dots./scripts/sysdash.sh"'
+
 #sql
 alias sql='mysql --system-command=ON -u root -p'
 
