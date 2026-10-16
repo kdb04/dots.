@@ -1,0 +1,68 @@
+{
+  "mcpServers": [
+    {
+      "name": "Claude Docs",
+      "purpose": "Access Claude documentation",
+      "scope": "user"
+    },
+    {
+      "name": "Apify",
+      "purpose": "Web scraping and data extraction",
+      "scope": "user"
+    },
+    {
+      "name": "Excalidraw",
+      "purpose": "Create and work with diagrams",
+      "scope": "user"
+    },
+    {
+      "name": "Context7",
+      "purpose": "Retrieve up-to-date library documentation",
+      "scope": "user"
+    },
+    {
+      "name": "Playwright",
+      "purpose": "Browser automation and UI verification",
+      "scope": "user"
+    },
+    {
+      "name": "GitHub",
+      "purpose": "Read repositories, issues, and pull requests",
+      "scope": "user",
+      "access": "read-only",
+      "authentication": "GitHub PAT stored in macOS Keychain"
+    }
+  ],
+  "plugins": [
+    {
+      "name": "CodeRabbit",
+      "purpose": "AI-powered code review",
+      "id": "coderabbit@anthropic-plugin-directory"
+    },
+    {
+      "name": "Chrome DevTools",
+      "purpose": "Browser debugging, network inspection, and performance analysis",
+      "id": "chrome-devtools-mcp@chrome-devtools-plugins"
+    },
+    {
+      "name": "Serena",
+      "purpose": "Semantic code navigation and symbol references",
+      "id": "serena@claude-plugins-official"
+    },
+    {
+      "name": "Code Simplifier",
+      "purpose": "Simplify code and improve readability",
+      "id": "code-simplifier@claude-plugins-official"
+    },
+    {
+      "name": "Pyright LSP",
+      "purpose": "Python language intelligence",
+      "id": "pyright-lsp@claude-plugins-official"
+    },
+    {
+      "name": "gopls LSP",
+      "purpose": "Go language intelligence",
+      "id": "gopls-lsp@claude-plugins-official"
+    }
+  ]
+}

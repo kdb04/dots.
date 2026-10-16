@@ -1,0 +1,32 @@
+{
+  "model": "sonnet",
+  "deniedMcpServers": [
+    {
+      "serverName": "claude.ai Gmail"
+    },
+    {
+      "serverName": "claude.ai Google Calendar"
+    },
+    {
+      "serverName": "claude.ai Google Drive"
+    }
+  ],
+  "enabledPlugins": {
+    "pyright-lsp@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "coderabbit@anthropic-plugin-directory": true,
+    "chrome-devtools-mcp@chrome-devtools-plugins": true,
+    "serena@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "chrome-devtools-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "ChromeDevTools/chrome-devtools-mcp"
+      }
+    }
+  },
+  "effortLevel": "medium",
+  "theme": "dark"
+}
